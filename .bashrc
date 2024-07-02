@@ -117,3 +117,5 @@ if ! shopt -oq posix; then
 fi
 
 PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null); if [ -n "$PS1_CMD1" ]; then PS1_CMD1=" ($PS1_CMD1)"; fi; PS1="\[\e[38;5;40m\]\w\[\e[0m\]\[\e[91m\]$PS1_CMD1\[\e[0m\] \$ "'
+
+export PATH="$PATH:~/bin"
