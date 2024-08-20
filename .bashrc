@@ -116,6 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PROMPT_COMMAND='FLOX_ENV=$(flox envs --active --json | jq -r ".[0].pointer.name // empty" 2>/dev/null); PS1_CMD1=$(git branch --show-current 2>/dev/null); if [ -n "$FLOX_ENV" ]; then FLOX_ENV=" ($FLOX_ENV)"; fi; if [ -n "$PS1_CMD1" ]; then PS1_CMD1=" ($PS1_CMD1)"; fi; PS1="\[\e[38;5;75m\]$FLOX_ENV\[\e[38;5;40m\]\w\[\e[0m\]\[\e[91m\]$PS1_CMD1\[\e[0m\] \$ "'
+export FLOX_ENV=$(flox envs --active --json | jq -r ".[0].pointer.name // empty" 2>/dev/null)
+export GIT_BRANCH=$(git branch --show-current 2>/dev/null)
+
+PROMPT_COMMAND='if [ -n "$FLOX_ENV" ]; then FLOX_STR=" ($FLOX_ENV)"; fi; if [ -n "$GIT_BRANCH" ]; then GIT_STR=" ($GIT_BRANCH)"; fi; PS1="\[\e[38;5;75m\]$FLOX_STR\[\e[38;5;40m\]\w\[\e[0m\]\[\e[91m\]$GIT_STR\[\e[0m\] \$ "'
 
 export PATH="$PATH:~/bin"
