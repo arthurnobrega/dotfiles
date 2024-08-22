@@ -6,7 +6,7 @@ update_prompt() {
 
   # Only include $FLOX_PROMPT_ENVIRONMENTS if it's not empty
   if [ -n "$FLOX_PROMPT_ENVIRONMENTS" ]; then
-    env_str="\[\e[38;5;75m\][$FLOX_PROMPT_ENVIRONMENTS] "
+    env_str="[$FLOX_PROMPT_ENVIRONMENTS] "
   fi
 
   # Check if we're in a Git repository and get the branch name
@@ -33,12 +33,12 @@ update_prompt() {
 
     # Add status string if not empty
     if [ -n "$git_status_str" ] || [ -n "$uncommitted_changes_str" ]; then
-      git_branch_str="\[\e[0m\]\[\e[91m\]$git_branch_str ($git_status_str$uncommitted_changes_str)\[\e[0m\]"
+      git_branch_str+=" ($git_status_str$uncommitted_changes_str)"
     fi
   fi
 
   # Construct the prompt string
-  PS1="$env_str\[\e[38;5;40m\]\w$git_branch_str \$ "
+  PS1="\[\e[38;5;75m\]$env_str\[\e[38;5;40m\]\w\[\e[0m\]\[\e[91m\]$git_branch_str\[\e[0m\] \$ "
 }
 
 PROMPT_COMMAND="update_prompt"
