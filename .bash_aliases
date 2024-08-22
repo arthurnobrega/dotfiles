@@ -6,6 +6,7 @@ alias gm="git merge"
 alias gco="git checkout"
 alias gc="git commit"
 alias gl="git log"
+alias gst="git stash"
 
 # Docker compose
 alias dp="docker ps"

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ -f ~/.bash_aliases ]; then
+  mv ~/.bash_aliases ~/.bash_aliases_bkp
+fi
+ln -s $(pwd)/.bash_aliases ~/.bash_aliases
+
+if [ -f ~/.bash_prompt ]; then
+  mv ~/.bash_prompt ~/.bash_prompt_bkp
+fi
+ln -s $(pwd)/.bash_prompt ~/.bash_prompt
+
+if [ -f ~/.bash_completion ]; then
+  mv ~/.bash_completion ~/.bash_completion_bkp
+fi
+ln -s $(pwd)/.bash_completion ~/.bash_completion
+
+if [ -f ~/.bash_logout ]; then
+  mv ~/.bash_logout ~/.bash_logout_bkp
+fi
+ln -s $(pwd)/.bash_logout ~/.bash_logout
+
+if [ -f ~/.bashrc ]; then
+  mv ~/.bashrc ~/.bashrc_bkp
+fi
+ln -s $(pwd)/.bashrc ~/.bashrc

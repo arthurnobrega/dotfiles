@@ -1,0 +1,45 @@
+update_prompt() {
+  local env_str=""
+  local git_branch_str=""
+  local git_status_str=""
+  local uncommitted_changes_str=""
+
+  # Only include $FLOX_PROMPT_ENVIRONMENTS if it's not empty
+  if [ -n "$FLOX_PROMPT_ENVIRONMENTS" ]; then
+    env_str="[$FLOX_PROMPT_ENVIRONMENTS] "
+  fi
+
+  # Check if we're in a Git repository and get the branch name
+  local git_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  if [ -n "$git_branch" ]; then
+    git_branch_str=" ($git_branch) "
+
+    # Check if there are commits to push or pull
+    local ahead_count=$(git rev-list --count ${git_branch}..origin/${git_branch} 2>/dev/null)
+    local behind_count=$(git rev-list --count origin/${git_branch}..${git_branch} 2>/dev/null)
+
+    if [ "$ahead_count" -gt 0 ]; then
+      git_status_str+="↓$ahead_count"
+    fi
+
+    if [ "$behind_count" -gt 0 ]; then
+      git_status_str+="↑$behind_count"
+    fi
+
+    # Check for uncommitted changes
+    if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
+      uncommitted_changes_str="*"
+    fi
+
+    # Add status string if not empty
+    if [ -n "$git_status_str" ] || [ -n "$uncommitted_changes_str" ]; then
+      git_branch_str+="($git_status_str$uncommitted_changes_str)"
+    fi
+  fi
+
+  # Construct the prompt string
+  PS1="\[\e[38;5;75m\]$env_str\[\e[38;5;40m\]\w\[\e[0m\]\[\e[91m\]$git_branch_str\[\e[0m\] \$ "
+}
+
+PROMPT_COMMAND="update_prompt"
+

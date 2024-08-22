@@ -1,0 +1,2 @@
+. ~/projects/local/complete-alias/complete_alias
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
