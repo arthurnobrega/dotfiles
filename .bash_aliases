@@ -15,5 +15,5 @@ alias dcr="docker compose run"
 alias dcs="docker compose stop"
 alias dcl="docker compose logs"
 alias dce="docker compose exec"
-alias drm="docker rm -f $(docker ps -qa)"
+alias drm='docker rm -f $(docker ps -qa)'
 alias dcb="docker compose build"
