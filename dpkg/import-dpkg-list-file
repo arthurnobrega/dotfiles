@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo dpkg --set-selections < ~/projects/local/dotfiles/dpkg/dpkg-list.txt
+sudo apt-get dselect-upgrade -y
+
