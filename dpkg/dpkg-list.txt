@@ -328,6 +328,7 @@ hicolor-icon-theme				install
 hostname					install
 hplip						install
 hplip-data					install
+htop						install
 humanity-icon-theme				install
 hunspell-en-us					install
 hwdata						install
