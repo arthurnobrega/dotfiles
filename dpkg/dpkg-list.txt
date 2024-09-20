@@ -1520,6 +1520,7 @@ sssd-proxy					install
 strace						install
 sudo						install
 switcheroo-control				install
+syncthing					install
 sysstat						install
 system-config-printer-common			install
 system-config-printer-udev			install

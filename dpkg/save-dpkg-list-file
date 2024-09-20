@@ -3,6 +3,6 @@
 sudo systemctl enable cron
 dpkg --get-selections > ~/projects/local/dotfiles/dpkg/dpkg-list.txt
 cd ~/projects/local/dotfiles
-git add dpkg-list.txt
+git add dpkg/dpkg-list.txt
 git commit -m "Update dpkg list $(date +'%Y-%m-%d') from $(hostname)"
 git push origin main
