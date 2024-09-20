@@ -24,4 +24,4 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-0 12 * * * /home/arthurnobrega/projects/local/dotfiles/dpkg/save-dpkg-list-file
+0 12 * * * /home/$(whoami)/projects/local/dotfiles/dpkg/save-dpkg-list-file

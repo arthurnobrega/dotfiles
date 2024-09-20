@@ -1,26 +1,39 @@
 #!/bin/bash
 
 if [ -f ~/.bash_aliases ]; then
+  echo "Movendo ~/.bash_aliases para ~/.bash_aliases_bkp"
   mv ~/.bash_aliases ~/.bash_aliases_bkp
 fi
 ln -s $(pwd)/.bash_aliases ~/.bash_aliases
 
 if [ -f ~/.bash_prompt ]; then
+  echo "Movendo ~/.bash_prompt para ~/.bash_prompt_bkp"
   mv ~/.bash_prompt ~/.bash_prompt_bkp
 fi
 ln -s $(pwd)/.bash_prompt ~/.bash_prompt
 
 if [ -f ~/.bash_completion ]; then
+  echo "Movendo ~/.bash_completion para ~/.bash_completion_bkp"
   mv ~/.bash_completion ~/.bash_completion_bkp
 fi
 ln -s $(pwd)/.bash_completion ~/.bash_completion
 
 if [ -f ~/.bash_logout ]; then
+  echo "Movendo ~/.bash_logout para ~/.bash_logout_bkp"
   mv ~/.bash_logout ~/.bash_logout_bkp
 fi
 ln -s $(pwd)/.bash_logout ~/.bash_logout
 
 if [ -f ~/.bashrc ]; then
+  echo "Movendo ~/.bashrc para ~/.bashrc_bkp"
   mv ~/.bashrc ~/.bashrc_bkp
 fi
 ln -s $(pwd)/.bashrc ~/.bashrc
+
+if [ -f /var/spoll/cron/crontabs/$(whoami) ]; then
+  echo "Movendo /var/spool/cron/crontabs/$(whoami) para /var/spool/cron/crontabs/$(whoami)_bkp"
+  sudo mv /var/spool/cron/crontabs/$(whoami) /var/spool/cron/crontabs/$(whoami)_bkp
+fi
+sudo ln -s $(pwd)/var/spool/cron/crontabs/username /var/spool/cron/crontabs/$(whoami)
+sudo systemctl enable cron
+sudo service cron start
