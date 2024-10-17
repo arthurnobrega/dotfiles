@@ -9,11 +9,13 @@ alias gl="git log"
 alias gst="git stash"
 
 # Docker compose
-alias dp="docker ps"
+alias dps="docker ps"
 alias dcu="docker compose up"
 alias dcr="docker compose run"
+alias dcd="docker compose down"
 alias dcs="docker compose stop"
 alias dcl="docker compose logs"
 alias dce="docker compose exec"
+alias dcp="docker compose ps"
 alias drm='docker rm -f $(docker ps -qa)'
-alias dcb="docker compose build"
+alias dcb="docker compose build --progress=plain"
