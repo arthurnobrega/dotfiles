@@ -96,5 +96,10 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+
 . "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
+. "$HOME/.asdf/completions/asdf.bash
+"
+export JAVA_HOME=$(asdf where java)
+
+export PATH=$JAVA_HOME/bin:~/projects/local/intellij-idea/bin:$PATH
