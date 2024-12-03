@@ -19,3 +19,12 @@ alias dce="docker compose exec"
 alias dcp="docker compose ps"
 alias drm='docker rm -f $(docker ps -qa)'
 alias dcb="docker compose build --progress=plain"
+
+# Kubernetes
+alias kb="kubectl"
+alias kbg="kubectl get"
+alias kbdel="kubectl delete"
+alias kbl="kubectl logs"
+alias kbd="kubectl describe"
+alias kbc="kubectl create"
+alias kba="kubectl apply"
